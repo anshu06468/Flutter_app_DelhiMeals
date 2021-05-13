@@ -1,4 +1,7 @@
-import 'package:delhimeals/screens/meal_details_screen.dart';
+import './screens/Filters_screen.dart';
+
+import './screens/meal_details_screen.dart';
+import './screens/tabs_screen.dart';
 
 import './screens/category_meals_screen.dart';
 
@@ -36,9 +39,17 @@ class MyApp extends StatelessWidget {
       // home: CategoriesScreen(),
       initialRoute: '/',
       routes: {
-        '/': (_) => CategoriesScreen(),
+        '/': (_) => TabsScreen(),
         CategoryMealScreen.routeName: (ctx) => CategoryMealScreen(),
         MealDetailsScreen.routeName: (ctx) => MealDetailsScreen(),
+        FilterScreen.routeName: (ctx) => FilterScreen(),
+      },
+      // if routes found in routes table
+      onGenerateRoute: (settings) {
+        return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
       },
     );
   }
